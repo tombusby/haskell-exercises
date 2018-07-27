@@ -1,18 +1,19 @@
 
 -- Time-and-Space-Efficient because it doesn't need to keep any values that are
 -- older than F_n-2 and F_n-1
-fibonacciAccumulator :: Integral a => Int -> a
+fibonacciAccumulator :: Integral a => a -> a
 fibonacciAccumulator 0 = 0
 fibonacciAccumulator 1 = 1
 fibonacciAccumulator n = fibAccumulate n 0 1
     where
+        fibAccumulate :: (Eq t1, Num t1, Num t2) => t1 -> t2 -> t2 -> t2
         fibAccumulate 1 _ b = b
         fibAccumulate n a b = fibAccumulate (n-1) b (a+b)
 
 -- Time-efficient because it has been converted to tail-recursion.
 -- Generating the infinite list of values, and selecting the one we want, is an example
 -- of how powerful Haskell is. fibonacci 100000 takes less than 1 second.
-fibonacciInfList :: Integral a => Int -> aI
+fibonacciInfList :: Integral a => Int -> a
 fibonacciInfList n = ([0, 1] ++ fibRecurse 0 1) !! n
     where
         fibRecurse :: Integral a => a -> a -> [a]
