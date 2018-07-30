@@ -75,7 +75,7 @@ encryptRound :: Key -> Block -> Block
 encryptRound key = keyAdd key . mixColumns . shiftRows . byteSub
 
 keyAdd :: Key -> Block -> Block
-keyAdd key block = [k `xor` b | (k, b) <- zip key block]
+keyAdd = zipWith xor
 
 mixColumns :: Block -> Block
 mixColumns = id
