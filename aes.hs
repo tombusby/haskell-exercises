@@ -91,4 +91,4 @@ main = do
     plaintextBlocks' <- return [last plaintextBlocks] -- Remove later
     encryptedBlocks <- return . encryptBlocksECB rootKey . addPadding $ plaintextBlocks'
     print encryptedBlocks
-    B.writeFile "outputtext.txt" . B.pack . foldr (++) [] $ encryptedBlocks
+    B.writeFile "outputtext.txt" . B.pack . concat $ encryptedBlocks
