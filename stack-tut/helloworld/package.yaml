@@ -24,7 +24,7 @@ dependencies:
 - text
 - filepath
 - containers
-- acme-missiles # added
+- acme-missiles
 
 library:
   source-dirs: src
